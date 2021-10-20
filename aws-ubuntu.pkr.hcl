@@ -33,4 +33,16 @@ build {
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
+
+  provisioner "shell"{
+    inline=[
+      "sudo apt-get purge libappstream4 -y",
+      "sudo apt-get update",
+      "sudo apt-get -y upgrade",
+      "sleep 30",
+      "sudo apt install default-jre -y",
+      "sleep 30",
+      "sudo apt install default-jdk -y",
+    ]
+  }
 }
