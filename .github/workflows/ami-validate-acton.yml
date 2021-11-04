@@ -1,0 +1,14 @@
+name: ami validate action
+on : pull_request
+jobs: 
+  ami-validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      name: Checkout
+
+    - uses: hashicorp/packer-github-actions@master
+      with: 
+        command: validate
+        arguments: -syntax-only
+        target: aws-ubuntu.pkr.hcl
