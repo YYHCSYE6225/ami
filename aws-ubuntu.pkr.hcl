@@ -11,6 +11,10 @@ variable "ssh_username" {
   type = string
 }
 
+variable "prod_id" {
+  type = string
+}
+
 packer {
   required_plugins {
     amazon = {
@@ -26,7 +30,9 @@ source "amazon-ebs" "ubuntu" {
   region        = "${var.region}"
   source_ami    = "${var.source_ami}"
   ssh_username  = "${var.ssh_username}"
+  ami_users=["${var.prod_id}"]
 }
+
 
 build {
   name = "csye6225-packer"
@@ -43,6 +49,13 @@ build {
       "sudo apt install default-jre -y",
       "sleep 30",
       "sudo apt install default-jdk -y",
+      "sudo apt install ruby-full -y",
+      "sudo apt install wget",
+      "cd /home/ubuntu",
+      "wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install",
+      "chmod +x ./install",
+      "sudo ./install auto",
+      "sudo apt install net-tools"
     ]
   }
 }
