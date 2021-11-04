@@ -11,7 +11,6 @@ crash.log
 ### Packer Patch ###
 # ignore temporary output files
 output-*/
-vars.pkrvars.hcl
 
 ### VisualStudioCode ###
 .vscode/*
