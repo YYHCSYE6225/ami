@@ -55,7 +55,16 @@ build {
       "wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install",
       "chmod +x ./install",
       "sudo ./install auto",
-      "sudo apt install net-tools"
+      "sudo apt install net-tools",
+      "sudo apt-get install collectd -y",
+      "wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb",
+      "sleep 30",
+      "sudo dpkg -i -E ./amazon-cloudwatch-agent.deb",
+      "sudo apt-get install nodejs -y",
+      "git clone https://github.com/statsd/statsd.git",
+      "cd statsd",
+      "cp exampleConfig.js config.js",
+      "node /home/ubuntu/statsd/stats.js /home/ubuntu/statsd/config.js"
     ]
   }
 }
