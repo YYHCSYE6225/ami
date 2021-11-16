@@ -63,8 +63,7 @@ build {
       "sudo apt-get install nodejs -y",
       "git clone https://github.com/statsd/statsd.git",
       "cd statsd",
-      "cp exampleConfig.js config.js",
-      "node /home/ubuntu/statsd/stats.js /home/ubuntu/statsd/config.js"
+      "cp exampleConfig.js config.js"
     ]
   }
 }
